@@ -25,7 +25,7 @@ function handleMessage(orgId, data) {
 function handleConversation(orgId, data) {
     const messageBody = data.body
     const conversationId = data.id
-    console.log("Yeah! We found a new conversation!")
+    console.log("Yeah! We found a /googlethat message!!!")
     console.log("Conversion Id is " + conversationId)
       return getContactId(conversationId, GetContactId, orgId)
 }
@@ -236,7 +236,7 @@ app.listen(process.env.PORT || 3000, () => console.log('googlethat listening on 
 app.post('/api', (req, res) => {
   
   if (req.body.type === 'new_message') {
-      handleConversation(req.body.orgId, req.body.data);  
+      handleMessage(req.body.orgId, req.body.data);  
   }
   
   return res.send('ok')
