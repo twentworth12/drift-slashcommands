@@ -22,15 +22,6 @@ function handleMessage(orgId, data) {
 }
 
 
-function handleConversation(orgId, data) {
-    const messageBody = data.body
-    const conversationId = data.id
-    console.log("Yeah! We found a /googlethat message!!!")
-    console.log("Conversion Id is " + conversationId)
-      return getContactId(conversationId, GetContactId, orgId)
-}
-
-
 // Get the contact ID from Drift
 function getContactId(conversationId, callbackFn, orgId) {
   request
