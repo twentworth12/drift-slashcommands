@@ -21,31 +21,17 @@ function handleMessage(orgId, data) {
   }
 }
 
-
-
 // Get the email address from Drift
-function getContactEmail (contactId, callbackFn, conversationId, orgId) {
-
+function readMessage (conversationId, orgId) {
 
 	request
-	  .get(CONTACT_API_BASE + `${contactId}`)
+	  .get(CONVERSATION_API_BASE + `${conversationId}` + "/messages/")
 	  .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
 	  
-	  console.log("socialProfile Email is " + res.body.data.attributes.socialProfiles.email)
-	  
-	  if (typeof res.body.data.attributes.email != 'undefined') {
-	  	emailAddress = res.body.data.attributes.email
-	  	} else 
-	  	 	{  
-	  	 	if (typeof res.body.data.attributes.socialProfiles.email != 'undefined') {
-	  	 		emailAddress = res.body.data.attributes.socialProfiles.email
-	  	 	}
-	  	 }	  	
-	  
-			callbackFn(emailAddress, conversationId, orgId)
-		 });
+	
+		
 	}
 
 function GetContactEmail(emailAddress, conversationId, orgId) { 
@@ -68,8 +54,7 @@ function postMessage(body, conversationId, orgId) {
     .set('Content-Type', 'application/json')
     .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
     .send(message)
-    .catch(err => console.log(err))
-        
+    .catch(err => console.log(err))  
 }
 
 app.use(bodyParser.json())
