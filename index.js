@@ -15,7 +15,7 @@ function handleMessage(orgId, data) {
     const conversationId = data.conversationId
 
     if (messageBody.startsWith('/googlethat')) {
-      console.log("Yeah! We found a /googlethat message!")
+      console.log("Yeah! We found a /googlethat message!!!")
       return getContactId(conversationId, GetContactId, orgId)
     }
   }
