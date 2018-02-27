@@ -30,7 +30,8 @@ function readMessage (conversationId, orgId) {
 	  .end(function (err, res) {
 	 console.log("data is " + res.body.data.contactID);
 	}
-
+}
+	       
 function postMessage(body, conversationId, orgId) { 
 
 		
