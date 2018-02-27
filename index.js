@@ -8,18 +8,14 @@ const DRIFT_TOKEN = process.env.BOT_API_TOKEN
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 const CONTACT_API_BASE = 'https://driftapi.com/contacts'
 
-// Set this to true if you want to automatically lookup users for new conversations where we have an email address
-// Turned off because there's some sort of bug
-const AUTO_LOOKUP = false;
-
 
 function handleMessage(orgId, data) {
   if (data.type === 'private_note') {
     const messageBody = data.body
     const conversationId = data.conversationId
 
-    if (messageBody.startsWith('/lookup')) {
-      console.log("Yeah! We found a /lookup message!")
+    if (messageBody.startsWith('/googlethat')) {
+      console.log("Yeah! We found a /googlethat message!")
       return getContactId(conversationId, GetContactId, orgId)
     }
   }
