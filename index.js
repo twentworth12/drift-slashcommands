@@ -16,7 +16,7 @@ function handleMessage(orgId, data) {
 
     if (messageBody.startsWith('/googlethat')) {
       console.log("Yeah! We found a /googlethat message!!!")
-      return getContactId(conversationId, GetContactId, orgId)
+      return readMessage(conversationId, orgId)
     }
   }
 }
@@ -65,19 +65,6 @@ function getContactEmail (contactId, callbackFn, conversationId, orgId) {
 
 function GetContactEmail(emailAddress, conversationId, orgId) { 
     return returnSFAccessToken(emailAddress, ReturnSFAccessToken, conversationId, orgId)
-}
-
-// Use jsforce to authenticate to Salesforce. Note your Salesforce implementation may require a different connection method
-function returnSFAccessToken(emailAddress, callbackFn, conversationId, orgId) {
-
-	var jsforce = require('jsforce');
-	var conn = new jsforce.Connection({
-	});
-
-	conn.login(SF_USER, SF_PASS, function(err, userInfo) {
-	  if (err) { return console.error(err); }
-	  callbackFn(emailAddress, conn.accessToken, conversationId, orgId)
-	});
 }
 
 function postMessage(body, conversationId, orgId) { 
