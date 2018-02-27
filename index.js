@@ -23,20 +23,13 @@ function handleMessage(orgId, data) {
 
 // Get the email address from Drift
 function readMessage (conversationId, orgId) {
-
 	request
 	  .get(CONVERSATION_API_BASE + `${conversationId}` + "/messages/")
 	  .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
-	  
-	
-		
+	 console.log("data is " + res.body.data.contactID);
 	}
-
-function GetContactEmail(emailAddress, conversationId, orgId) { 
-    return returnSFAccessToken(emailAddress, ReturnSFAccessToken, conversationId, orgId)
-}
 
 function postMessage(body, conversationId, orgId) { 
 
