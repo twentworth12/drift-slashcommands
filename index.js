@@ -5,10 +5,6 @@ const request = require('superagent');
 
 const DRIFT_TOKEN = process.env.BOT_API_TOKEN
 
-// Needed to get Salesforce token
-const SF_USER = process.env.SF_USER
-const SF_PASS = process.env.SF_PASS
-
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 const CONTACT_API_BASE = 'https://driftapi.com/contacts'
 
@@ -240,12 +236,9 @@ function postMessage(body, conversationId, orgId) {
 }
 
 app.use(bodyParser.json())
-app.listen(process.env.PORT || 3000, () => console.log('salesforce-lookup listening on port 3000!'))
+app.listen(process.env.PORT || 3000, () => console.log('googlethat listening on port 3000!'))
 app.post('/api', (req, res) => {
   
-  if (req.body.type === 'new_message') {
-    handleMessage(req.body.orgId, req.body.data);  
-  }
   if ((req.body.type === 'new_conversation') && AUTO_LOOKUP ) {
       handleConversation(req.body.orgId, req.body.data);  
   }
