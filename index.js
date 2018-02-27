@@ -22,21 +22,6 @@ function handleMessage(orgId, data) {
 }
 
 
-// Get the contact ID from Drift
-function getContactId(conversationId, callbackFn, orgId) {
-  request
-   .get(CONVERSATION_API_BASE + `${conversationId}`)
-    .set('Content-Type', 'application/json')
-    .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
-   .end(function(err, res){
-       callbackFn(res.body.data.contactId, conversationId, orgId)
-     });
-}
-
-
-function GetContactId(contactId, conversationId, orgId) { 
-    return getContactEmail(contactId, GetContactEmail, conversationId, orgId);
-}
 
 // Get the email address from Drift
 function getContactEmail (contactId, callbackFn, conversationId, orgId) {
@@ -94,6 +79,5 @@ app.post('/api', (req, res) => {
   if (req.body.type === 'new_message') {
       handleMessage(req.body.orgId, req.body.data);  
   }
-  
   return res.send('ok')
 })
