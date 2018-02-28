@@ -21,7 +21,7 @@ function handleMessage(orgId, data) {
       return readMessage(conversationId, orgId, messageBody)
     }
     if (messageBody.startsWith('/justin')) {
-      console.log("Yeah! We found a /community message!!!")
+      console.log("Yeah! We found a /justin message!!!")
       return readMessage(conversationId, orgId, messageBody)
     }		  
 	  
@@ -49,7 +49,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 
 	if (messageBody.startsWith('/community')) {
 		var query = "site:community.rapidminer.com" + messageBody.substr(10);
-	} else if (messageBody.startsWith('/community')) {
+	} else if (messageBody.startsWith('/justin')) {
 		var query = "https://web.archive.org/web/20160316052651/https://www.bostonglobe.com/magazine/2016/03/04/blind-date-what-motivation/lKqPUFb83pzDbFjZVDSOmK/story.html";
 	} else
 		{
