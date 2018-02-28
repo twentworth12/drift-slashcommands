@@ -1,5 +1,5 @@
 {
-  "name": "Salesforce Lookup",
-  "description": "Looks up a user in Salesforce and writes it to a Drift conversation",
-  "repository": "https://github.com/twentworth12/tw-drift"
+  "name": "googlethat",
+  "description": "Let me Google that for you. In Drift.",
+  "repository": "https://github.com/twentworth12/googlethat"
 }
