@@ -16,24 +16,24 @@ function handleMessage(orgId, data) {
 
     if (messageBody.startsWith('/googlethat')) {
       console.log("Yeah! We found a /googlethat message!!!")
-      return readMessage(conversationId, orgId)
+      return readMessage(conversationId, orgId, messageBody)
     }
   }
 }
 
 // Get the email address from Drift
-function readMessage (conversationId, orgId) {
+function readMessage (conversationId, orgId, messageBody) {
 	request
 	  .get(CONVERSATION_API_BASE + `${conversationId}` + "/messages/")
 	  .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
 	 	console.log("data is " + res.body.data.messages[0].body);
-		return googleThat(conversationId, orgId, GoogleThat)
+		return googleThat(conversationId, orgId, GoogleThat, messageBody)
 	   });
 }
 
-function googleThat (conversationId, orgId, callbackFn) {
+function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	
 	var body = "";
 	var google = require('google')
@@ -41,7 +41,9 @@ function googleThat (conversationId, orgId, callbackFn) {
 	google.resultsPerPage = 5
 	var nextCounter = 0
 
-	google('rapidminer', function (err, res){
+	var query = messageBody.slice(-11);
+
+	google(query, function (err, res){
   		if (err) console.error(err)
 
 		  for (var i = 0; i < 5; ++i) {
