@@ -49,6 +49,11 @@ function googleThat (conversationId, orgId, callbackFn) {
 		    body = body + link.title + ' - ' + link.href + "<br/>" + link.description;
 		  }
 
+		  if (nextCounter < 1) {
+			    nextCounter += 1
+			    if (res.next) res.next()
+			  }
+		
 		})
 	
 	callbackFn(body, conversationId, orgId)
