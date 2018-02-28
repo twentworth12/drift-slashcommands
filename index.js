@@ -61,14 +61,7 @@ function postMessage(body, conversationId, orgId) {
     'orgId': orgId,
     'body': body,
     'type': 'private_prompt',
-     }
-    
-  const message = {
-    'orgId': orgId,
-    'body': body,
-    'type': 'private_prompt',
-  }    
-    
+  	}
     
     // Send the message
     request
