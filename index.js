@@ -43,11 +43,11 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	google(query, function (err, res){
   		if (err) console.error(err)
 
-		  for (var i = 0; i < 5; ++i) {
+		  for (var i = 0; i < 4; ++i) {
 		    var link = res.links[i];
-		    body = body + "<p><a target=_blank href=" + link.href + ">" + link.title + "</a><br/>" + "</p>";
+		    body = "<p><a target=_blank href=" + link.href + ">" + link.title + "</a><br/>" + "</p>";
+		    callbackFn(body, conversationId, orgId);
 		  }
-		callbackFn(body, conversationId, orgId);
 		})
 }
 
@@ -68,21 +68,13 @@ function postMessage(body, conversationId, orgId) {
     'body': body,
     'type': 'private_prompt',
     'buttons': [{
-      'label': 'Send',
-      'value': 'Hello World',
+      'label': 'Send This Result',
+      'value': body,
       'type': 'reply',
       'style': 'primary',
       'reaction': {
         'type': 'delete'
       }
-    }, {
-      'label': 'Shuffle',
-      'value': 'Hello World',
-      'type': 'action'
-    }, {
-      'label': 'Cancel',
-      'value': 'cancel',
-      'type': 'noop', // switch to noop
     },]
   }    
     
