@@ -9,6 +9,7 @@ const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 
 function handleMessage(orgId, data) {
   if (data.type === 'private_note') {
+    console.log("Drift private note")
     const messageBody = data.body
     const conversationId = data.conversationId
 
@@ -23,9 +24,9 @@ function handleMessage(orgId, data) {
     if (messageBody.startsWith('/Justin')) {
       console.log("Yeah! We found a /justin message!!!")
       return readMessage(conversationId, orgId, messageBody)
-    }		  
-	  
+    }	  
   }
+return
 }
 
 // Get the email address from Drift
