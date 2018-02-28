@@ -63,6 +63,22 @@ function postMessage(body, conversationId, orgId) {
     'type': 'private_prompt',
      }
     
+  const message = {
+    'orgId': orgId,
+    'body': body,
+    'type': 'private_prompt',
+    'buttons': [{
+      'label': 'Send',
+      'value': 'Hello World',
+      'type': 'reply',
+      'style': 'primary',
+      'reaction': {
+        'type': 'delete'
+      }
+    },]
+  }    
+    
+    
     // Send the message
     request
     .post(CONVERSATION_API_BASE + `/${conversationId}/messages`)
