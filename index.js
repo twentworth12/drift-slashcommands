@@ -35,7 +35,7 @@ function readMessage (conversationId, orgId) {
 
 function googleThat (conversationId, orgId, callbackFn) {
 	
-	var body = "hello world<br/>";
+	var body = "";
 	var google = require('google')
 
 	google.resultsPerPage = 5
@@ -46,7 +46,7 @@ function googleThat (conversationId, orgId, callbackFn) {
 
 		  for (var i = 0; i < 5; ++i) {
 		    var link = res.links[i];
-		    body = body + "<p><a href=" + link.href + ">" + link.title + "<br/>" + link.description + "</p>";
+		    body = body + "<p><a href=" + link.href + ">" + link.title + "</a><br/>" + link.description + "</p>";
 		  }
 		callbackFn(body, conversationId, orgId);
 		})
