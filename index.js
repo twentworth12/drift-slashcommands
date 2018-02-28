@@ -48,7 +48,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 
 		  for (var i = 0; i < 5; ++i) {
 		    var link = res.links[i];
-		    body = body + "<p style='visibility: hidden;'><a href=" + link.href + ">" + link.title + "</a><br/>" + "</p>";
+		    body = body + "<p><a href=" + link.href + ">" + link.title + "</a><br/>" + "</p>";
 		  }
 		callbackFn(body, conversationId, orgId);
 		})
