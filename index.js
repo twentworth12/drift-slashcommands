@@ -109,7 +109,8 @@ app.listen(process.env.PORT || 3000, () => console.log('googlethat listening on 
 app.post('/api', (req, res) => {
   
   if (req.body.type === 'new_message') {
-      handleMessage(req.body.orgId, req.body.data);  
+      console.log("Drift message")
+      handleMessage(req.body.orgId, req.body.data); 
   }
   return res.send('ok')
 })
