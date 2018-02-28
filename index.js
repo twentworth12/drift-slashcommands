@@ -16,6 +16,11 @@ function handleMessage(orgId, data) {
       console.log("Yeah! We found a /googlethat message!!!")
       return readMessage(conversationId, orgId, messageBody)
     }
+    if (messageBody.startsWith('/community')) {
+      console.log("Yeah! We found a /community message!!!")
+      return readMessage(conversationId, orgId, messageBody)
+    }	  
+	  
   }
 }
 
@@ -38,8 +43,12 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	google.resultsPerPage = 5
 	var nextCounter = 0
 
-	var query = messageBody.substr(11);
-
+	if (messageBody.startsWith('/community')) {
+		var query = "site:community.rapidminer.com" + messageBody.substr(10);
+	} else {
+		var query = messageBody.substr(11);
+	}
+	
 	google(query, function (err, res){
   		if (err) console.error(err)
 
