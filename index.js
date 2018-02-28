@@ -92,8 +92,7 @@ function postMessage(body, conversationId, orgId) {
         'type': 'delete'
       }
     },]
-  }    
-    
+  }   
     
     // Send the message
     request
@@ -101,7 +100,8 @@ function postMessage(body, conversationId, orgId) {
     .set('Content-Type', 'application/json')
     .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
     .send(message)
-    .catch(err => console.log(err))  
+    .catch(err => console.log(err))
+    return
 }
 
 app.use(bodyParser.json())
@@ -109,7 +109,6 @@ app.listen(process.env.PORT || 3000, () => console.log('googlethat listening on 
 app.post('/api', (req, res) => {
   
   if (req.body.type === 'new_message') {
-      console.log("New Drift message!!! " + req.body.data.body)
       handleMessage(req.body.orgId, req.body.data);  
   }
   return res.send('ok')
