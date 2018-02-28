@@ -34,26 +34,21 @@ function readMessage (conversationId, orgId) {
 }
 
 function googleThat (conversationId, orgId, callbackFn) {
-	var body = "hello world";
 	
+	var body = "hello world<br/>";
 	var google = require('google')
 
 	google.resultsPerPage = 5
 	var nextCounter = 0
 
-	google('node.js best practices', function (err, res){
+	google('rapidminer', function (err, res){
   		if (err) console.error(err)
 
-		  for (var i = 0; i < res.links.length; ++i) {
+		  for (var i = 0; i < 5; ++i) {
 		    var link = res.links[i];
-		    console.log(link.title + ' - ' + link.href)
-		    console.log(link.description + "\n")
+		    body = body + link.title + ' - ' + link.href + "<br/>" + link.description;
 		  }
 
-		  if (nextCounter < 4) {
-		    nextCounter += 1
-		    if (res.next) res.next()
-		  }
 		})
 	
 	callbackFn(body, conversationId, orgId)
