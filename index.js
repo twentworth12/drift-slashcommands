@@ -46,7 +46,7 @@ function googleThat (conversationId, orgId, callbackFn) {
 
 		  for (var i = 0; i < 5; ++i) {
 		    var link = res.links[i];
-		    body = body + "<p><a href=" + link.href + ">" + link.title + "</a><br/>" + link.description + "</p>";
+		    body = body + "<p><a href=" + link.href + ">" + link.title + "</a><br/>" + "</p>";
 		  }
 		callbackFn(body, conversationId, orgId);
 		})
