@@ -57,11 +57,35 @@ function GoogleThat (body, conversationId, orgId) {
 	       
 function postMessage(body, conversationId, orgId) { 
 		
-    const message = {
+    const message1 = {
     'orgId': orgId,
     'body': body,
     'type': 'private_prompt',
   	}
+
+  const message = {
+    'orgId': orgId,
+    'body': body,
+    'type': 'private_prompt',
+    'buttons': [{
+      'label': 'Send',
+      'value': 'Hello World',
+      'type': 'reply',
+      'style': 'primary',
+      'reaction': {
+        'type': 'delete'
+      }
+    }, {
+      'label': 'Shuffle',
+      'value': 'Hello World',
+      'type': 'action'
+    }, {
+      'label': 'Cancel',
+      'value': 'cancel',
+      'type': 'noop', // switch to noop
+    },]
+  }    
+    
     
     // Send the message
     request
