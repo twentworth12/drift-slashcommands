@@ -6,8 +6,6 @@ const request = require('superagent');
 const DRIFT_TOKEN = process.env.BOT_API_TOKEN
 
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
-const CONTACT_API_BASE = 'https://driftapi.com/contacts'
-
 
 function handleMessage(orgId, data) {
   if (data.type === 'private_note') {
@@ -28,7 +26,6 @@ function readMessage (conversationId, orgId, messageBody) {
 	  .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
-	 	console.log("data is " + res.body.data.messages[0].body);
 		return googleThat(conversationId, orgId, GoogleThat, messageBody)
 	   });
 }
@@ -59,16 +56,14 @@ function GoogleThat (body, conversationId, orgId) {
 }
 	       
 function postMessage(body, conversationId, orgId) { 
-
 		
     const message = {
     'orgId': orgId,
     'body': body,
     'type': 'private_prompt',
   	}
-  
     
-  	// Send the message
+    // Send the message
     request
     .post(CONVERSATION_API_BASE + `/${conversationId}/messages`)
     .set('Content-Type', 'application/json')
