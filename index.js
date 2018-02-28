@@ -29,7 +29,18 @@ function readMessage (conversationId, orgId) {
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
 	 	console.log("data is " + res.body.data.messages[0].body);
+		return googleThat(conversationId, orgId, GoogleThat)
 	   });
+}
+
+function googleThat (conversationId, orgId, callbackFn) {
+	var body = "hello world";
+	callbackFn(body, conversationId, orgId)
+
+}
+
+function GoogleThat (body, conversationId, orgId) {
+    return postMessage(body, conversationId, orgId);
 }
 	       
 function postMessage(body, conversationId, orgId) { 
