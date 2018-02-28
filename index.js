@@ -48,16 +48,8 @@ function googleThat (conversationId, orgId, callbackFn) {
 		    var link = res.links[i];
 		    body = body + link.title + ' - ' + link.href + "<br/>" + link.description;
 		  }
-
-		  if (nextCounter < 1) {
-			    nextCounter += 1
-			    if (res.next) res.next()
-			  }
-		
+		callbackFn(body, conversationId, orgId);
 		})
-	
-	callbackFn(body, conversationId, orgId)
-
 }
 
 function GoogleThat (body, conversationId, orgId) {
