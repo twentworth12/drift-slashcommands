@@ -28,7 +28,7 @@ function readMessage (conversationId, orgId) {
 	  .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
-	 	console.log("data is " + res.data.messages[0].body);
+	 	console.log("data is " + res.body.data.messages[0].body);
 	   });
 }
 	       
