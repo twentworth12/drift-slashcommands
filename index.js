@@ -28,8 +28,8 @@ function readMessage (conversationId, orgId) {
 	  .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
-	 	console.log("data is " + res.body.data);
-		}
+	 	// console.log("data is " + res.body.data);
+	   });
 }
 	       
 function postMessage(body, conversationId, orgId) { 
