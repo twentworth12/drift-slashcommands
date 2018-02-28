@@ -67,15 +67,6 @@ function postMessage(body, conversationId, orgId) {
     'orgId': orgId,
     'body': body,
     'type': 'private_prompt',
-    'buttons': [{
-      'label': 'Send',
-      'value': 'Hello World',
-      'type': 'reply',
-      'style': 'primary',
-      'reaction': {
-        'type': 'delete'
-      }
-    },]
   }    
     
     
