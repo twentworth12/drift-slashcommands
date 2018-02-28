@@ -41,7 +41,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	google.resultsPerPage = 5
 	var nextCounter = 0
 
-	var query = messageBody.slice(-13);
+	var query = messageBody.substr(11);
 
 	google(query, function (err, res){
   		if (err) console.error(err)
