@@ -21,7 +21,7 @@ function handleMessage(orgId, data) {
       console.log("Yeah! We found a /community message!!!")
       return readMessage(conversationId, orgId, messageBody)
     }
-    if (messageBody.startsWith('/Justin')) {
+    if (messageBody.startsWith('/winning')) {
       console.log("Yeah! We found a /justin message!!!")
       return readMessage(conversationId, orgId, messageBody)
     }	  
@@ -50,8 +50,8 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 
 	if (messageBody.startsWith('/community')) {
 		var query = "site:community.rapidminer.com" + messageBody.substr(10);
-	} else if (messageBody.startsWith('/Justin')) {
-		var query = "blind date whats my motivation";
+	} else if (messageBody.startsWith('/winning')) {
+		var query = "all i do is win";
 	} else
 		{
 		var query = messageBody.substr(11);
