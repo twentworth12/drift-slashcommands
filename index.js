@@ -3,6 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const request = require('superagent');
 
+// Set this in Heroku
 const DRIFT_TOKEN = process.env.BOT_API_TOKEN
 
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
@@ -13,6 +14,7 @@ function handleMessage(orgId, data) {
     const messageBody = data.body
     const conversationId = data.conversationId
 
+    // Okay, what command did we get
     if (messageBody.startsWith('/googlethat')) {
       console.log("Yeah! We found a /googlethat message!!!")
       return readMessage(conversationId, orgId, messageBody)
@@ -26,7 +28,7 @@ function handleMessage(orgId, data) {
       return readMessage(conversationId, orgId, messageBody)
     }	  
     if (messageBody.startsWith('/winning')) {
-      console.log("Yeah! We found a /justin message!!!")
+      console.log("Yeah! We found a /winning message!!!")
       return readMessage(conversationId, orgId, messageBody)
     }	  
   }
@@ -52,10 +54,11 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	google.resultsPerPage = 5
 	var nextCounter = 0
 
+	// Each of these changes the Google search query
 	if (messageBody.startsWith('/community')) {
 		var query = "site:community.rapidminer.com" + messageBody.substr(10);
 	} else if (messageBody.startsWith('/winning')) {
-		var query = "all i do is win";
+		var query = "all i do is win"; // no matter what
 	} else if (messageBody.startsWith('/docs')) {
 		var query = "site:docs.rapidminer.com" + messageBody.substr(5);
 	}
@@ -66,7 +69,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	
 	google(query, function (err, res){
   		if (err) console.error(err)
-
+		// Generate the search results in a string
 		  for (var i = 0; i < 4; ++i) {
 		    var link = res.links[i];
 		    body = "<p>Let me know if this link helps: <a target=_blank href=" + link.href + ">" + link.title + "</a><br/>" + "</p>";
@@ -79,13 +82,7 @@ function GoogleThat (body, conversationId, orgId) {
     return postMessage(body, conversationId, orgId);
 }
 	       
-function postMessage(body, conversationId, orgId) { 
-		
-    const message1 = {
-    'orgId': orgId,
-    'body': body,
-    'type': 'private_prompt',
-  	}
+function postMessage(body, conversationId, orgId) { 	
 
   const message = {
     'orgId': orgId,
@@ -117,7 +114,6 @@ app.listen(process.env.PORT || 3000, () => console.log('googlethat listening on 
 app.post('/api', (req, res) => {
   
   if (req.body.type === 'new_message') {
-      console.log("Drift message")
       handleMessage(req.body.orgId, req.body.data); 
   }
   return res.send('ok')
