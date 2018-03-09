@@ -59,7 +59,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 		var query = "site:community.rapidminer.com" + messageBody.substr(10);
 	} else if (messageBody.startsWith('/winning')) {
 		// no matter what
-		callbackFn("https://www.youtube.com/watch?v=GGXzlRoNtHU", conversationId, orgId);
+		callbackFn("<a href='https://www.youtube.com/watch?v=GGXzlRoNtHU'>BOOM!</a>", conversationId, orgId);
 		return;
 		
 	} else if (messageBody.startsWith('/docs')) {
