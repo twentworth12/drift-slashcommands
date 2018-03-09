@@ -58,7 +58,10 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	if (messageBody.startsWith('/community')) {
 		var query = "site:community.rapidminer.com" + messageBody.substr(10);
 	} else if (messageBody.startsWith('/winning')) {
-		var query = "all i do is win"; // no matter what
+		// no matter what
+		callbackFn("https://www.youtube.com/watch?v=GGXzlRoNtHU", conversationId, orgId);
+		return;
+		
 	} else if (messageBody.startsWith('/docs')) {
 		var query = "site:docs.rapidminer.com" + messageBody.substr(5);
 	}
