@@ -23,22 +23,10 @@ function handleMessage(orgId, data) {
       console.log("Yeah! We found a /googlethat message!!!")
       return readMessage(conversationId, orgId, messageBody)
     }  
-    if (messageBody.startsWith('/alvaro')) {
+    if (messageBody.startsWith('/meme')) {
       console.log("Yeah! We found a /alvaro message!!!")
-      postMessage("Alvaro at the club</br><a href=https://media.giphy.com/media/57Y0HrGWcu4WYvc6vE/giphy.gif>", conversationId, orgId)
-    }
-    if (messageBody.startsWith('/hayley')) {
-      console.log("Yeah! We found a /alvaro message!!!")
-      postMessage("Hayley at the club</br><a href=https://media.giphy.com/media/8j3CTd8YJtAv6/giphy.gif>", conversationId, orgId)
-    }
-    if (messageBody.startsWith('/woodward')) {
-      console.log("Yeah! We found a /woodward message!!!")
-      postMessage("DW at the club</br><a href=https://media.giphy.com/media/2FdcUDcUyM1ws/giphy.gif>", conversationId, orgId)
-    }
-    if (messageBody.startsWith('/kara')) {
-      console.log("Yeah! We found a /kara message!!!")
-      postMessage("Kara at the club</br><a href=https://media.giphy.com/media/iSqCZ0HYzI23K/giphy.gif>", conversationId, orgId)
-    }		  
+      return readMessage(conversationId, orgId, messageBody)
+    }	  
   }
 return
 }
@@ -55,6 +43,15 @@ function readMessage (conversationId, orgId, messageBody) {
 }
 
 function googleThat (conversationId, orgId, callbackFn, messageBody) {
+
+	 if (messageBody.startsWith('/meme')) {
+	   request
+	  .get("https://api.imgflip.com/caption_image?template_id=14859329&username=IMGFLIP_USER&pass=IMGFLIP_PASS&text0=" + messageBody)
+	  .end(function (err, res) {
+		postMessage("<a href=" + res.url + ">", conversationId, orgId)
+	   });
+	 }
+	
 	
 	  customsearch.cse.list({
 	    cx: GOOGLE_CX,
