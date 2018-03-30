@@ -51,9 +51,27 @@ function memeThat (conversationId, orgId, messageBody) {
 	 if (messageBody.startsWith('/meme')) {
 	   var memeBody = messageBody.slice(9)
            var memeBody1 = memeBody.split(",")
+	   
+	   switch (memeBody1[0]) {
+		   case "boromir":
+			   var memeChar = "61579";
+			   break;
+		   case "interesting":
+			   var memeChar = "61532";
+			   break;
+		   case "oprah":
+			   var memeChar = "28251713";
+			   break;
+		   case "wonka":
+			   var memeChar = "61582";
+			   break;
+		   default:
+			   var memeChar = "1509839";
+			   break;
+	   }
            
 	   request
-	  .get("https://api.imgflip.com/caption_image?template_id=61579&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[0] + "&text1=" + memeBody1[1])
+	  .get("https://api.imgflip.com/caption_image?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
 		var meme = "<img src=" + res.body.data.url + ">"
