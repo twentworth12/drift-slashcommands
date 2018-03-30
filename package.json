@@ -10,7 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "google": "2.1.0",
+    "googleapis": "27.0.0",
     "body-parser": "1.18.2",
     "express": "4.16.2",
     "nodemon": "1.12.1",
