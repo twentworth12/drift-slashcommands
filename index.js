@@ -10,6 +10,10 @@ const DRIFT_TOKEN = process.env.BOT_API_TOKEN
 const GOOGLE_TOKEN = process.env.GOOGLE_API_TOKEN
 const GOOGLE_CX = process.env.GOOGLE_CX_TOKEN
 
+const IMGFLIP_USER = process.env.IMGFLIP_USER
+const IMGFLIP_PASS = process.env.IMGFLIP_PASS
+
+
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 
 function handleMessage(orgId, data) {
