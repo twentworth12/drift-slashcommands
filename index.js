@@ -34,7 +34,11 @@ function handleMessage(orgId, data) {
     if (messageBody.startsWith('/woodward')) {
       console.log("Yeah! We found a /woodward message!!!")
       postMessage("DW at the club</br><a href=https://media.giphy.com/media/2FdcUDcUyM1ws/giphy.gif>", conversationId, orgId)
-    }	  
+    }
+    if (messageBody.startsWith('/kara')) {
+      console.log("Yeah! We found a /kara message!!!")
+      postMessage("Kara at the club</br><a href=https://media.giphy.com/media/iSqCZ0HYzI23K/giphy.gif>", conversationId, orgId)
+    }		  
   }
 return
 }
