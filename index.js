@@ -49,8 +49,11 @@ function readMessage (conversationId, orgId, messageBody) {
 function memeThat (conversationId, orgId, messageBody) {
 
 	 if (messageBody.startsWith('/meme')) {
+	   var memeBody = messageBody.slice(9)
+           var memeBody1 = memeBody.split(",")
+           
 	   request
-	  .get("https://api.imgflip.com/caption_image?template_id=14859329&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + messageBody)
+	  .get("https://api.imgflip.com/caption_image?template_id=14859329&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[0] + "&text1=" + memeBody1[1])
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
 		var meme = "<img src=" + res.body.data.url + ">"
