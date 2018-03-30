@@ -50,7 +50,7 @@ function memeThat (conversationId, orgId, messageBody) {
 
 	 if (messageBody.startsWith('/meme')) {
 	   request
-	  .get("https://api.imgflip.com/caption_image?template_id=14859329&username=IMGFLIP_USER&pass=IMGFLIP_PASS&text0=" + messageBody)
+	  .get("https://api.imgflip.com/caption_image?template_id=14859329&username=IMGFLIP_USER&password=IMGFLIP_PASS&text0=" + messageBody)
 	  .end(function (err, res) {
 		var meme = "<a href=" + res.url + ">"
 		console.log("meme is " + JSON.stringify(res, undefined, 2));
