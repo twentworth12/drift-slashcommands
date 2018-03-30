@@ -2,9 +2,13 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const request = require('superagent');
+const {google} = require('googleapis');
+const customsearch = google.customsearch('v1');
 
 // Set this in Heroku
 const DRIFT_TOKEN = process.env.BOT_API_TOKEN
+const GOOGLE_TOKEN = process.env.GOOGLE_API_TOKEN
+const GOOGLE_CX = process.env.GOOGLE_CX_TOKEN
 
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 
@@ -48,37 +52,26 @@ function readMessage (conversationId, orgId, messageBody) {
 
 function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	
-	var body = "";
-	var google = require('google')
+	  customsearch.cse.list({
+	    cx: GOOGLE_CX,
+	    q: messageBody,
+	    auth: GOOGLE_TOKEN
+	  }, (err, res) => {
+	    if (err) {
+	      throw err;
+	    }
+		  
+	  for (var i = 0; i < 6; ++i) {
+	    if (res.data.items[i] != undefined) {
 
-	google.resultsPerPage = 5
-	var nextCounter = 0
+		var link = res.data.items[i];
 
-	// Each of these changes the Google search query
-	if (messageBody.startsWith('/community')) {
-		var query = "site:community.rapidminer.com" + messageBody.substr(10);
-	} else if (messageBody.startsWith('/winning')) {
-		// no matter what
-		callbackFn("<a href='https://www.youtube.com/watch?v=GGXzlRoNtHU'>BOOM!</a>", conversationId, orgId);
-		return;
-		
-	} else if (messageBody.startsWith('/docs')) {
-		var query = "site:docs.rapidminer.com" + messageBody.substr(5);
-	}
-	else
-		{
-		var query = messageBody.substr(11);
-	}
+		body = "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>";
+		callbackFn(body, conversationId, orgId);
+		}
+	  }	    
+  });
 	
-	google(query, function (err, res){
-  		if (err) console.error(err)
-		// Generate the search results in a string
-		  for (var i = 0; i < 4; ++i) {
-		    var link = res.links[i];
-		    body = "<p>Let me know if this link helps: <a target=_blank href=" + link.href + ">" + link.title + "</a><br/>" + "</p>";
-		    callbackFn(body, conversationId, orgId);
-		  }
-		})
 }
 
 function GoogleThat (body, conversationId, orgId) {
