@@ -48,7 +48,7 @@ function readMessage (conversationId, orgId, messageBody) {
 
 function memeThat (conversationId, orgId, messageBody) {
 
-	 if (messageBody.startsWith('/meme')) {
+	 if (messageBody.startsWith('/memethat')) {
 	   var memeBody = messageBody.slice(10)
            var memeBody1 = memeBody.split(",")
 	   console.log("body is " + memeBody1[0])
