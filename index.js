@@ -53,7 +53,7 @@ function memeThat (conversationId, orgId, messageBody) {
 	  .get("https://api.imgflip.com/caption_image?template_id=14859329&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + messageBody)
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
-		var meme = "<a href=" + res.body.data.url + ">"
+		var meme = "<img src=" + res.body.data.url + ">"
 		console.log("meme is " + meme);
 		postMessage(meme, conversationId, orgId)
 		return
