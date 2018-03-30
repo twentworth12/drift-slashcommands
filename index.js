@@ -25,7 +25,7 @@ function handleMessage(orgId, data) {
     }  
     if (messageBody.startsWith('/meme')) {
       console.log("Yeah! We found a /alvaro message!!!")
-      return readMessage(conversationId, orgId, messageBody)
+      return memeThat(conversationId, orgId, messageBody)
     }	  
   }
 return
@@ -42,15 +42,20 @@ function readMessage (conversationId, orgId, messageBody) {
 	   });
 }
 
-function googleThat (conversationId, orgId, callbackFn, messageBody) {
+function memeThat (conversationId, orgId, messageBody) {
 
 	 if (messageBody.startsWith('/meme')) {
 	   request
 	  .get("https://api.imgflip.com/caption_image?template_id=14859329&username=IMGFLIP_USER&pass=IMGFLIP_PASS&text0=" + messageBody)
 	  .end(function (err, res) {
 		postMessage("<a href=" + res.url + ">", conversationId, orgId)
+		return
 	   });
 	 }
+}
+
+
+function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	
 	
 	  customsearch.cse.list({
