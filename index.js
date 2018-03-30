@@ -22,18 +22,10 @@ function handleMessage(orgId, data) {
     if (messageBody.startsWith('/googlethat')) {
       console.log("Yeah! We found a /googlethat message!!!")
       return readMessage(conversationId, orgId, messageBody)
-    }
-    if (messageBody.startsWith('/community')) {
-      console.log("Yeah! We found a /community message!!!")
-      return readMessage(conversationId, orgId, messageBody)
-    }
-    if (messageBody.startsWith('/docs')) {
-      console.log("Yeah! We found a /community message!!!")
-      return readMessage(conversationId, orgId, messageBody)
-    }	  
-    if (messageBody.startsWith('/winning')) {
-      console.log("Yeah! We found a /winning message!!!")
-      return readMessage(conversationId, orgId, messageBody)
+    }  
+    if (messageBody.startsWith('/alvaro')) {
+      console.log("Yeah! We found a /alvaro message!!!")
+      postMessage("Alvaro at the club</br><a href=https://media.giphy.com/media/57Y0HrGWcu4WYvc6vE/giphy.gif>", conversationId, orgId)
     }	  
   }
 return
