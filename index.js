@@ -54,9 +54,9 @@ function memeThat (conversationId, orgId, messageBody) {
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
 		var meme = "<a href=" + res.body.data.url + ">"
-		console.log("meme is " + JSON.stringify(res.text, undefined, 2));
-		console.log("meme is " + JSON.stringify(res.data, undefined, 2));
-		postMessage("meme", conversationId, orgId)
+		console.log("meme is " + JSON.stringify(res.body.data, undefined, 2));
+		console.log("meme is " + JSON.stringify(res.body, undefined, 2));
+		postMessage(meme, conversationId, orgId)
 		return
 	   });
 	 }
