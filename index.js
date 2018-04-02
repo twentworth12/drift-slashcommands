@@ -5,8 +5,9 @@ const request = require('superagent');
 const {google} = require('googleapis');
 const customsearch = google.customsearch('v1');
 
-// Set this in Heroku
+// Set these in Heroku
 const DRIFT_TOKEN = process.env.BOT_API_TOKEN
+
 const GOOGLE_TOKEN = process.env.GOOGLE_API_TOKEN
 const GOOGLE_CX = process.env.GOOGLE_CX_TOKEN
 
@@ -15,6 +16,7 @@ const IMGFLIP_PASS = process.env.IMGFLIP_PASS
 
 
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
+const IMGFLIP_API_BASE = 'https://api.imgflip.com/caption_image'
 
 function handleMessage(orgId, data) {
   if (data.type === 'private_note') {
@@ -47,7 +49,8 @@ function readMessage (conversationId, orgId, messageBody) {
 }
 
 function memeThat (conversationId, orgId, messageBody) {
-
+// Creates a meme using the imgflip API
+	
 	 if (messageBody.startsWith('/memethat')) {
 	   var memeBody = messageBody.slice(10)
            var memeBody1 = memeBody.split(",")
@@ -71,7 +74,7 @@ function memeThat (conversationId, orgId, messageBody) {
 	   }
            
 	   request
-	  .get("https://api.imgflip.com/caption_image?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
+	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
 		var meme = "<img src=" + res.body.data.url + ">"
@@ -82,9 +85,8 @@ function memeThat (conversationId, orgId, messageBody) {
 	 }
 }
 
-
 function googleThat (conversationId, orgId, callbackFn, messageBody) {
-	
+// Searches google using the custom search API
 	
 	  customsearch.cse.list({
 	    cx: GOOGLE_CX,
