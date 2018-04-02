@@ -1,4 +1,4 @@
-# Drift Slashcommands
+# Drift slashcommands
 
 /googlethat searches Google inside of a Drift converation using the Google custom search API
 
