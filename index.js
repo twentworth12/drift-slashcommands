@@ -72,6 +72,21 @@ function memeThat (conversationId, orgId, messageBody) {
 		   default:
 			   var memeChar = "1509839";
 	   }
+		 
+	    var message = {
+	    'orgId': orgId,
+	    'body': body,
+	    'type': 'private_prompt',
+	    'buttons': [{
+	      'label': 'Send This Result',
+	      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
+	      'type': 'reply',
+	      'style': 'primary',
+	      'reaction': {
+		'type': 'delete'
+	      	 }
+	    },]
+	    } 	 
            
 	   request
 	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
@@ -104,7 +119,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 
 	    var message = {
 	    'orgId': orgId,
-	    'body': body,
+	    'body': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
 	    'type': 'private_prompt',
 	    'buttons': [{
 	      'label': 'Send This Result',
@@ -116,7 +131,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	      }
 	    },]
 	  }  	 
-		    
+		
 		callbackFn(message, conversationId, orgId);
 		}
 	  }
