@@ -102,8 +102,7 @@ function memeThat (conversationId, orgId, messageBody) {
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
 		var meme = "<img src=" + res.body.data.url + ">"
-		console.log("meme is " + meme);
-		postMessage(meme, conversationId, orgId)
+		postMessage(message, conversationId, orgId)
 		return
 	   });
 	 }
