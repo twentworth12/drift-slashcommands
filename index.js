@@ -102,35 +102,34 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 
 		var link = res.data.items[i];
 
-		body = "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>";
-		callbackFn(body, conversationId, orgId);
+	    var message = {
+	    'orgId': orgId,
+	    'body': body,
+	    'type': 'private_prompt',
+	    'buttons': [{
+	      'label': 'Send This Result',
+	      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>";,
+	      'type': 'reply',
+	      'style': 'primary',
+	      'reaction': {
+		'type': 'delete'
+	      }
+	    },]
+	  }  	 
+		    
+		callbackFn(message, conversationId, orgId);
 		}
-	  }	    
+	  }
   });
 	
 }
 
-function GoogleThat (body, conversationId, orgId) {
-    return postMessage(body, conversationId, orgId);
+function GoogleThat (message, conversationId, orgId) {
+    return postMessage(message, conversationId, orgId);
 }
 	       
-function postMessage(body, conversationId, orgId) { 	
-
-  const message = {
-    'orgId': orgId,
-    'body': body,
-    'type': 'private_prompt',
-    'buttons': [{
-      'label': 'Send This Result',
-      'value': body,
-      'type': 'reply',
-      'style': 'primary',
-      'reaction': {
-        'type': 'delete'
-      }
-    },]
-  }   
-    
+function postMessage(message, conversationId, orgId) {
+	
     // Send the message
     request
     .post(CONVERSATION_API_BASE + `/${conversationId}/messages`)
