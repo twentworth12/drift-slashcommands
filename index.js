@@ -78,6 +78,7 @@ function memeThat (conversationId, orgId, messageBody) {
 	      'type': 'noop', // switch to noop
 	    },]
 	  }
+	    }
 }
 
 function sendMeme (meme, conversationId, orgId) {
@@ -87,7 +88,6 @@ function sendMeme (meme, conversationId, orgId) {
 	  .get(IMGFLIP_API_BASE)
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
-
 		   var message = {
 		    'orgId': orgId,
 		    'body': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
@@ -106,7 +106,6 @@ function sendMeme (meme, conversationId, orgId) {
 		postMessage(message, conversationId, orgId)
 		return
 	   });
-
 }
 
 function googleThat (conversationId, orgId, callbackFn, messageBody) {
