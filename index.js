@@ -75,7 +75,7 @@ function memeThat (conversationId, orgId, messageBody) {
 		 
 	    var message = {
 	    'orgId': orgId,
-	    'body': body,
+	    'body': 'testing',
 	    'type': 'private_prompt',
 	    'buttons': [{
 	      'label': 'Boromir',
