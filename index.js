@@ -78,8 +78,17 @@ function memeThat (conversationId, orgId, messageBody) {
 	    'body': body,
 	    'type': 'private_prompt',
 	    'buttons': [{
-	      'label': 'Send This Result',
-	      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
+	      'label': 'Boromir',
+	      'value': 'boromir',
+	      'type': 'reply',
+	      'style': 'primary',
+	      'reaction': {
+		'type': 'delete'
+	      	 }
+	    },
+	    {
+	      'label': 'Oprah',
+	      'value': 'oprah',
 	      'type': 'reply',
 	      'style': 'primary',
 	      'reaction': {
@@ -115,28 +124,27 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	  for (var i = 0; i < 6; ++i) {
 	    if (res.data.items[i] != undefined) {
 
-		var link = res.data.items[i];
+		    var link = res.data.items[i];
 
-	    var message = {
-	    'orgId': orgId,
-	    'body': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
-	    'type': 'private_prompt',
-	    'buttons': [{
-	      'label': 'Send This Result',
-	      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
-	      'type': 'reply',
-	      'style': 'primary',
-	      'reaction': {
-		'type': 'delete'
-	      }
-	    },]
-	  }  	 
+		    var message = {
+		    'orgId': orgId,
+		    'body': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
+		    'type': 'private_prompt',
+		    'buttons': [{
+		      'label': 'Send This Result',
+		      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
+		      'type': 'reply',
+		      'style': 'primary',
+		      'reaction': {
+			'type': 'delete'
+		      }
+		    },]
+		  }  	 
 		
 		callbackFn(message, conversationId, orgId);
 		}
 	  }
-  });
-	
+  });	
 }
 
 function GoogleThat (message, conversationId, orgId) {
@@ -156,7 +164,7 @@ function postMessage(message, conversationId, orgId) {
 }
 
 app.use(bodyParser.json())
-app.listen(process.env.PORT || 3000, () => console.log('googlethat listening on port 3000!'))
+app.listen(process.env.PORT || 3000, () => console.log('drift-slashcommands listening on port 3000!'))
 app.post('/api', (req, res) => {
   
   if (req.body.type === 'new_message') {
