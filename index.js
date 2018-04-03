@@ -73,7 +73,29 @@ function memeThat (conversationId, orgId, messageBody) {
 			   var memeChar = "1509839";
 	   }
 		 
-           
+	    const message = {
+	    'orgId': orgId,
+	    'body': 'Boromir',
+	    'type': 'private_prompt',
+	    'buttons': [{
+	      'label': 'Boromir',
+	      'value': 'boromir',
+	      'type': 'reply',
+	      'style': 'primary',
+	      'reaction': {
+		'type': 'delete'
+	      }
+	    }, {
+	      'label': 'Oprah',
+	      'value': 'oprah',
+	      'type': 'action'
+	    }, {
+	      'label': 'Interesting Man',
+	      'value': 'interesting',
+	      'type': 'noop', // switch to noop
+	    },]
+	  }
+		 
 	   request
 	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
 	  .set('Content-Type', 'application/json')
