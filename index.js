@@ -108,7 +108,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	    'type': 'private_prompt',
 	    'buttons': [{
 	      'label': 'Send This Result',
-	      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>";,
+	      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
 	      'type': 'reply',
 	      'style': 'primary',
 	      'reaction': {
