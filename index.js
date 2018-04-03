@@ -78,7 +78,10 @@ function memeThat (conversationId, orgId, messageBody) {
 	      'type': 'noop', // switch to noop
 	    },]
 	  }
-	  postMessage(message, conversationId, orgId)  	    
+	    console.log("before post message")
+	    postMessage(message, conversationId, orgId)  	    
+
+	    
 	    }
 }
 
