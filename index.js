@@ -63,7 +63,7 @@ function memeThat (conversationId, orgId, messageBody) {
 	    'buttons': [{
 	      'label': 'Boromir',
 	      'value': 'boromir',    
-	      'type': 'action',
+	      'type': 'reply',
 	      'style': 'primary',
 	      'reaction': {
 		'type': 'delete'
@@ -78,7 +78,6 @@ function memeThat (conversationId, orgId, messageBody) {
 	      'type': 'noop', // switch to noop
 	    },]
 	  }
-	    console.log("before post message")
 	    postMessage(message, conversationId, orgId)  	    
 
 	    
