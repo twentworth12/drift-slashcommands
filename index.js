@@ -55,56 +55,58 @@ function memeThat (conversationId, orgId, messageBody) {
 	   var memeBody = messageBody.slice(10)
            var memeBody1 = memeBody.split(",")
 	   console.log("body is " + memeBody1[0])
-	   
-	   switch (memeBody1[0]) {
-		   case "boromir":
-			   var memeChar = "61579";
-			   break;
-		   case "interesting":
-			   var memeChar = "61532";
-			   break;
-		   case "oprah":
-			   var memeChar = "28251713";
-			   break;
-		   case "wonka":
-			   var memeChar = "61582";
-			   break;
-		   default:
-			   var memeChar = "1509839";
-	   }
 		 
 	    var message = {
 	    'orgId': orgId,
-	    'body': 'Boromir',
+	    'body': 'What Meme should we use?',
 	    'type': 'private_prompt',
 	    'buttons': [{
 	      'label': 'Boromir',
-	      'value': 'boromir',
-	      'type': 'reply',
+	      'value': "?template_id=61579&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2],    
+	      'type': 'private_prompt',
 	      'style': 'primary',
 	      'reaction': {
 		'type': 'delete'
 	      }
 	    }, {
 	      'label': 'Oprah',
-	      'value': 'oprah',
+	      'value': '28251713',
 	      'type': 'action'
 	    }, {
 	      'label': 'Interesting Man',
-	      'value': 'interesting',
+	      'value': '61532',
 	      'type': 'noop', // switch to noop
 	    },]
 	  }
+}
+
+function sendMeme (meme, conversationId, orgId) {
+// Creates a meme using the imgflip API
 		 
 	   request
-	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
+	  .get(IMGFLIP_API_BASE)
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
-		var meme = "<img src=" + res.body.data.url + ">"
+
+		   var message = {
+		    'orgId': orgId,
+		    'body': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
+		    'type': 'private_prompt',
+		    'buttons': [{
+		      'label': 'Send This Result',
+		      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
+		      'type': 'reply',
+		      'style': 'primary',
+		      'reaction': {
+			'type': 'delete'
+		      }
+		    },]
+		  }  
+		
 		postMessage(message, conversationId, orgId)
 		return
 	   });
-	 }
+
 }
 
 function googleThat (conversationId, orgId, callbackFn, messageBody) {
