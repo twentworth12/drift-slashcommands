@@ -73,7 +73,7 @@ function memeThat (conversationId, orgId, messageBody) {
 			   var memeChar = "1509839";
 	   }
 		 
-	    const message = {
+	    var message = {
 	    'orgId': orgId,
 	    'body': 'Boromir',
 	    'type': 'private_prompt',
