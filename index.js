@@ -29,8 +29,8 @@ function handleMessage(orgId, data) {
       console.log("Yeah! We found a /googlethat message!!!")
       return readMessage(conversationId, orgId, messageBody)
     }  
-    if (messageBody.startsWith('/meme')) {
-      console.log("Yeah! We found a /alvaro message!!!")
+    if (messageBody.startsWith('/memethat')) {
+      console.log("Yeah! We found a /memethat message!!!")
       return memeThat(conversationId, orgId, messageBody)
     }	  
   }
@@ -78,6 +78,7 @@ function memeThat (conversationId, orgId, messageBody) {
 	      'type': 'noop', // switch to noop
 	    },]
 	  }
+	  postMessage(message, conversationId, orgId)  	    
 	    }
 }
 
