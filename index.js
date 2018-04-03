@@ -79,7 +79,7 @@ function memeThat (conversationId, orgId, messageBody) {
 	    },]
 	  }
 	    postMessage(message, conversationId, orgId)  	    
-
+	    return
 	    
 	    }
 }
