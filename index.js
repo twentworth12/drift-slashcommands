@@ -62,7 +62,7 @@ function memeThat (conversationId, orgId, messageBody) {
 	    'type': 'private_prompt',
 	    'buttons': [{
 	      'label': 'Boromir',
-	      'value': "?template_id=61579&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2],    
+	      'value': 'boromir',    
 	      'type': 'private_prompt',
 	      'style': 'primary',
 	      'reaction': {
