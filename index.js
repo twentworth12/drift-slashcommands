@@ -63,7 +63,7 @@ function memeThat (conversationId, orgId, messageBody) {
 	    'buttons': [{
 	      'label': 'Boromir',
 	      'value': 'boromir',    
-	      'type': 'private_prompt',
+	      'type': 'action',
 	      'style': 'primary',
 	      'reaction': {
 		'type': 'delete'
