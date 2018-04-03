@@ -84,18 +84,16 @@ function memeThat (conversationId, orgId, messageBody) {
 	      'style': 'primary',
 	      'reaction': {
 		'type': 'delete'
-	      	 }
-	    },
-	    {
+	      }
+	    }, {
 	      'label': 'Oprah',
 	      'value': 'oprah',
-	      'type': 'reply',
-	      'style': 'primary',
-	      'reaction': {
-		'type': 'delete'
-	      	 }
-	    },]
-	    } 	 
+	      'type': 'action'
+	    }, {
+	      'label': 'Interesting Man',
+	      'value': 'interesting',
+	      'type': 'noop', // switch to noop
+	    },]	    
            
 	   request
 	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
