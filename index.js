@@ -29,8 +29,8 @@ function handleMessage(orgId, data) {
       console.log("Yeah! We found a /googlethat message!!!")
       return readMessage(conversationId, orgId, messageBody)
     }  
-    if (messageBody.startsWith('/memethat')) {
-      console.log("Yeah! We found a /memethat message!!!")
+    if (messageBody.startsWith('/meme')) {
+      console.log("Yeah! We found a /alvaro message!!!")
       return memeThat(conversationId, orgId, messageBody)
     }	  
   }
@@ -55,60 +55,34 @@ function memeThat (conversationId, orgId, messageBody) {
 	   var memeBody = messageBody.slice(10)
            var memeBody1 = memeBody.split(",")
 	   console.log("body is " + memeBody1[0])
-		 
-	    var message = {
-	    'orgId': orgId,
-	    'body': 'What Meme should we use?',
-	    'type': 'private_prompt',
-	    'buttons': [{
-	      'label': 'Boromir',
-	      'value': 'boromir',    
-	      'type': 'reply',
-	      'style': 'primary',
-	      'reaction': {
-		'type': 'delete'
-	      }
-	    }, {
-	      'label': 'Oprah',
-	      'value': '28251713',
-	      'type': 'action'
-	    }, {
-	      'label': 'Interesting Man',
-	      'value': '61532',
-	      'type': 'noop', // switch to noop
-	    },]
-	  }
-	    postMessage(message, conversationId, orgId)  	    
-	    return
-	    
-	    }
-}
-
-function sendMeme (meme, conversationId, orgId) {
-// Creates a meme using the imgflip API
-		 
+	   
+	   switch (memeBody1[0]) {
+		   case "boromir":
+			   var memeChar = "61579";
+			   break;
+		   case "interesting":
+			   var memeChar = "61532";
+			   break;
+		   case "oprah":
+			   var memeChar = "28251713";
+			   break;
+		   case "wonka":
+			   var memeChar = "61582";
+			   break;
+		   default:
+			   var memeChar = "1509839";
+	   }
+           
 	   request
-	  .get(IMGFLIP_API_BASE)
+	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
 	  .set('Content-Type', 'application/json')
 	  .end(function (err, res) {
-		   var message = {
-		    'orgId': orgId,
-		    'body': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
-		    'type': 'private_prompt',
-		    'buttons': [{
-		      'label': 'Send This Result',
-		      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
-		      'type': 'reply',
-		      'style': 'primary',
-		      'reaction': {
-			'type': 'delete'
-		      }
-		    },]
-		  }  
-		
-		postMessage(message, conversationId, orgId)
+		var meme = "<img src=" + res.body.data.url + ">"
+		console.log("meme is " + meme);
+		postMessage(meme, conversationId, orgId)
 		return
 	   });
+	 }
 }
 
 function googleThat (conversationId, orgId, callbackFn, messageBody) {
@@ -126,35 +100,37 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	  for (var i = 0; i < 6; ++i) {
 	    if (res.data.items[i] != undefined) {
 
-		    var link = res.data.items[i];
+		var link = res.data.items[i];
 
-		    var message = {
-		    'orgId': orgId,
-		    'body': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
-		    'type': 'private_prompt',
-		    'buttons': [{
-		      'label': 'Send This Result',
-		      'value': "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>",
-		      'type': 'reply',
-		      'style': 'primary',
-		      'reaction': {
-			'type': 'delete'
-		      }
-		    },]
-		  }  	 
-		
-		callbackFn(message, conversationId, orgId);
+		body = "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>";
+		callbackFn(body, conversationId, orgId);
 		}
-	  }
-  });	
+	  }	    
+  });
+	
 }
 
-function GoogleThat (message, conversationId, orgId) {
-    return postMessage(message, conversationId, orgId);
+function GoogleThat (body, conversationId, orgId) {
+    return postMessage(body, conversationId, orgId);
 }
 	       
-function postMessage(message, conversationId, orgId) {
-	
+function postMessage(body, conversationId, orgId) { 	
+
+  const message = {
+    'orgId': orgId,
+    'body': body,
+    'type': 'private_prompt',
+    'buttons': [{
+      'label': 'Send This Result',
+      'value': body,
+      'type': 'reply',
+      'style': 'primary',
+      'reaction': {
+        'type': 'delete'
+      }
+    },]
+  }   
+    
     // Send the message
     request
     .post(CONVERSATION_API_BASE + `/${conversationId}/messages`)
@@ -166,7 +142,7 @@ function postMessage(message, conversationId, orgId) {
 }
 
 app.use(bodyParser.json())
-app.listen(process.env.PORT || 3000, () => console.log('drift-slashcommands listening on port 3000!'))
+app.listen(process.env.PORT || 3000, () => console.log('googlethat listening on port 3000!'))
 app.post('/api', (req, res) => {
   
   if (req.body.type === 'new_message') {
