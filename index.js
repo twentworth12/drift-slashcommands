@@ -25,16 +25,25 @@ function handleMessage(orgId, data) {
     const conversationId = data.conversationId
 
     // Okay, what command did we get
+    if (messageBody.startsWith('/justin')) {
+      console.log("Yeah! We found a /justin message!!!")
+      return hayleyThat(conversationId, orgId, messageBody)
+    }  
     if (messageBody.startsWith('/googlethat')) {
       console.log("Yeah! We found a /googlethat message!!!")
       return readMessage(conversationId, orgId, messageBody)
     }  
     if (messageBody.startsWith('/meme')) {
-      console.log("Yeah! We found a /alvaro message!!!")
+      console.log("Yeah! We found a /meme message!!!")
       return memeThat(conversationId, orgId, messageBody)
     }	  
   }
 return
+}
+
+// Get the email address from Drift
+function hayleyThat (conversationId, orgId, messageBody) {
+    return postMessage("https://web.archive.org/web/20160316052651/http://www.bostonglobe.com:80/magazine/2016/03/04/blind-date-what-motivation/lKqPUFb83pzDbFjZVDSOmK/story.html", conversationId, orgId);
 }
 
 // Get the email address from Drift
