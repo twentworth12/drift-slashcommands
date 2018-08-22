@@ -46,7 +46,7 @@ function hayleyThat (conversationId, orgId, messageBody) {
 	    
     const driftMessage = {
     'orgId': orgId,
-    'body': "<p>Justin, we must never forget you</p><br/>https://web.archive.org/web/20160316052651/http://www.bostonglobe.com:80/magazine/2016/03/04/blind-date-what-motivation/lKqPUFb83pzDbFjZVDSOmK/story.html",
+    'body': "<p><a href='https://web.archive.org/web/20160316052651/http://www.bostonglobe.com:80/magazine/2016/03/04/blind-date-what-motivation/lKqPUFb83pzDbFjZVDSOmK/story.html'>Justin, we must never forget you</a></p><br/>",
     'type': 'private_prompt',
     }	
 	
