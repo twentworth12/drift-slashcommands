@@ -43,7 +43,22 @@ return
 
 // Get the email address from Drift
 function hayleyThat (conversationId, orgId, messageBody) {
-    return postMessage("https://web.archive.org/web/20160316052651/http://www.bostonglobe.com:80/magazine/2016/03/04/blind-date-what-motivation/lKqPUFb83pzDbFjZVDSOmK/story.html", conversationId, orgId);
+	    
+    const driftMessage = {
+    'orgId': orgId,
+    'body': "<p>Justin, we must never forget you</p><br/>https://web.archive.org/web/20160316052651/http://www.bostonglobe.com:80/magazine/2016/03/04/blind-date-what-motivation/lKqPUFb83pzDbFjZVDSOmK/story.html",
+    'type': 'private_prompt',
+    }	
+	
+    // Send the message
+    request
+    .post(CONVERSATION_API_BASE + `/${conversationId}/messages`)
+    .set('Content-Type', 'application/json')
+    .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
+    .send(driftMessage)
+    .catch(err => console.log(err))
+    return	
+
 }
 
 // Get the email address from Drift
