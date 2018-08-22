@@ -25,6 +25,10 @@ function handleMessage(orgId, data) {
     const conversationId = data.conversationId
 
     // Okay, what command did we get
+     if (messageBody.startsWith('/woodward')) {
+      console.log("Yeah! We found a /justin message!!!")
+      return woodwardThat(conversationId, orgId, messageBody)
+    }  
     if (messageBody.startsWith('/justin')) {
       console.log("Yeah! We found a /justin message!!!")
       return hayleyThat(conversationId, orgId, messageBody)
@@ -39,6 +43,26 @@ function handleMessage(orgId, data) {
     }	  
   }
 return
+}
+
+// Get the email address from Drift
+function woodwardThat (conversationId, orgId, messageBody) {
+	    
+    const driftMessage = {
+    'orgId': orgId,
+    'body': "<p><img src='https://img.buzzfeed.com/buzzfeed-static/static/2017-02/10/16/enhanced/buzzfeed-prod-fastlane-03/original-grid-image-10291-1486761196-4.jpg'><br/>https://www.youtube.com/watch?v=QyS_o6lqKS0",
+    'type': 'private_prompt',
+    }	
+	
+    // Send the message
+    request
+    .post(CONVERSATION_API_BASE + `/${conversationId}/messages`)
+    .set('Content-Type', 'application/json')
+    .set(`Authorization`, `bearer ${DRIFT_TOKEN}`)
+    .send(driftMessage)
+    .catch(err => console.log(err))
+    return	
+
 }
 
 // Get the email address from Drift
