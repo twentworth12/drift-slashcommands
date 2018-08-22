@@ -50,7 +50,7 @@ function woodwardThat (conversationId, orgId, messageBody) {
 	    
     const driftMessage = {
     'orgId': orgId,
-    'body': "<img src='https://img.buzzfeed.com/buzzfeed-static/static/2017-02/10/16/enhanced/buzzfeed-prod-fastlane-03/original-grid-image-10291-1486761196-4.jpg'><p>https://www.youtube.com/watch?v=QyS_o6lqKS0</p>",
+    'body': "https://www.youtube.com/watch?v=QyS_o6lqKS0",
     'type': 'private_prompt',
     }	
 	
