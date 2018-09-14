@@ -117,12 +117,20 @@ function memeThat (conversationId, orgId, messageBody) {
 		   case "drizzy":
 			   var memeChar = "71273969";
 			   break;
+		   case "wethebest":
+			   var memeChar = "58892453";
+			   break;
+		   case "car":
+			   var memeChar = "125349613";
+			   break;			   
 		   case "wonka":
 			   var memeChar = "61582";
 			   break;
 		   default:
 			   var memeChar = "1509839";
 	   }
+		 
+		 
            
 	   request
 	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
