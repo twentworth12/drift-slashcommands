@@ -114,6 +114,9 @@ function memeThat (conversationId, orgId, messageBody) {
 		   case "oprah":
 			   var memeChar = "28251713";
 			   break;
+		   case "drizzy":
+			   var memeChar = "71273969";
+			   break;
 		   case "wonka":
 			   var memeChar = "61582";
 			   break;
