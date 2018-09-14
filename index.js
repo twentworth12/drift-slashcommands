@@ -105,6 +105,12 @@ function memeThat (conversationId, orgId, messageBody) {
 	   console.log("body is " + memeBody1[0])
 	   
 	   switch (memeBody1[0]) {
+		   case "wethebest":
+			   var memeChar = "58892453";
+			   break;
+		   case "car":
+			   var memeChar = "125349613";
+			   break;
 		   case "boromir":
 			   var memeChar = "61579";
 			   break;
@@ -116,13 +122,7 @@ function memeThat (conversationId, orgId, messageBody) {
 			   break;
 		   case "drizzy":
 			   var memeChar = "71273969";
-			   break;
-		   case "wethebest":
-			   var memeChar = "58892453";
-			   break;
-		   case "car":
-			   var memeChar = "125349613";
-			   break;			   
+			   break;   
 		   case "wonka":
 			   var memeChar = "61582";
 			   break;
