@@ -57,10 +57,14 @@ function readMessage (conversationId, orgId, messageBody) {
 
 function communityPost (conversationId, orgId, messageBody) {
 // Post a message to the RapidMiner Community
+
+  var messageBody = messageBody.slice(11)
+  var messageBody1 = messageBody.split(",")
+  console.log("body is " + messageBody1[0])	
 	
   const forumMessage = {
-    'name': 'Testing Drift Post',
-    'body': 'Testing 123',
+    'name': messageBody1[0],
+    'body': messageBody1[1],
     'format': 'string',
     'categoryID': 47,
     'closed': false,
@@ -69,7 +73,6 @@ function communityPost (conversationId, orgId, messageBody) {
     'pinLocation': 'category',
     'groupID': 'Unknown Type: integer,null'	  
   } 
-	  
   
     request
     .post(VANILLA_API_BASE + `/discussions`)
