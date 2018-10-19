@@ -58,11 +58,23 @@ function readMessage (conversationId, orgId, messageBody) {
 function communityPost (conversationId, orgId, messageBody) {
 // Post a message to the RapidMiner Community
 	
+  const forumMessage = {
+    'name': 'Testing Drift Post',
+    'body': 'Testing 123',
+    'format': 'string',
+    'categoryID': 47,
+    'closed': false,
+    'sink': true,
+    'pinned': false,
+    'pinLocation': 'category',
+    'groupID': 'Unknown Type: integer,null'	  
+  } 
+	
     request
     .get(VANILLA_API_BASE + `/discussions`)
     .set('Content-Type', 'application/json')
     .set(`Authorization`, `Bearer ${VANILLA_TOKEN}`)
-    .send('{"name": "Drift Message","body": "Testing 1-2-3","format": "string","categoryID": 47,"closed": false,"sink": true,"pinned": false,"pinLocation": "category","groupID": "Unknown Type: integer,null"}')
+    .send(forumMessage)
     .catch(err => console.log(err))
     return
 
