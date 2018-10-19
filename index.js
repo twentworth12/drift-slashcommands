@@ -185,7 +185,7 @@ function postMessage(body, conversationId, orgId) {
 }
 
 app.use(bodyParser.json())
-app.listen(process.env.PORT || 3000, () => console.log('googlethat listening on port 3000!'))
+app.listen(process.env.PORT || 3000, () => console.log('slashcommands listening on port 3000!'))
 app.post('/api', (req, res) => {
   
   if (req.body.type === 'new_message') {
