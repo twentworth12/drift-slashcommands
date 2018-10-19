@@ -78,8 +78,7 @@ function communityPost (conversationId, orgId, messageBody) {
     .end(function (err, res) {
 	console.log("Posted to Vanilla");
 	return
-	   });
-	}
+	});
 }
 
 function memeThat (conversationId, orgId, messageBody) {
