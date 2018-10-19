@@ -61,7 +61,7 @@ function communityPost (conversationId, orgId, messageBody) {
     request
     .get(VANILLA_API_BASE + `/badges`)
     .set('Content-Type', 'application/json')
-    .set(`Authorization`, `bearer ${VANILLA_TOKEN}`)
+    .set(`Authorization`, `Bearer ${VANILLA_TOKEN}`)
     //.send(message)
     .catch(err => console.log(err))
     return
