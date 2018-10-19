@@ -69,9 +69,10 @@ function communityPost (conversationId, orgId, messageBody) {
     'pinLocation': 'category',
     'groupID': 'Unknown Type: integer,null'	  
   } 
-	
+	  
+  
     request
-    .get(VANILLA_API_BASE + `/discussions`)
+    .post(VANILLA_API_BASE + `/discussions`)
     .set('Content-Type', 'application/json')
     .set(`Authorization`, `bearer ${VANILLA_TOKEN}`)
     .send(forumMessage)
