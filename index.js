@@ -73,11 +73,13 @@ function communityPost (conversationId, orgId, messageBody) {
     request
     .get(VANILLA_API_BASE + `/discussions`)
     .set('Content-Type', 'application/json')
-    .set(`Authorization`, `Bearer ${VANILLA_TOKEN}`)
+    .set(`Authorization`, `bearer ${VANILLA_TOKEN}`)
     .send(forumMessage)
-    .catch(err => console.log(err))
-    return
-
+    .end(function (err, res) {
+	console.log("Posted to Vanilla");
+	return
+	   });
+	}
 }
 
 function memeThat (conversationId, orgId, messageBody) {
