@@ -25,22 +25,18 @@ function handleMessage(orgId, data) {
     const conversationId = data.conversationId
 
     // Okay, what command did we get
-     if (messageBody.startsWith('/woodward')) {
-      console.log("Yeah! We found a /justin message!!!")
-      return woodwardThat(conversationId, orgId, messageBody)
-    }  
-    if (messageBody.startsWith('/justin')) {
-      console.log("Yeah! We found a /justin message!!!")
+    if (messageBody.startsWith('/community')) {
+      console.log("Yeah! We found a /community message!!!")
       return hayleyThat(conversationId, orgId, messageBody)
-    }  
+    }
     if (messageBody.startsWith('/googlethat')) {
       console.log("Yeah! We found a /googlethat message!!!")
       return readMessage(conversationId, orgId, messageBody)
-    }  
+    }
     if (messageBody.startsWith('/meme')) {
       console.log("Yeah! We found a /meme message!!!")
       return memeThat(conversationId, orgId, messageBody)
-    }	  
+    } 
   }
 return
 }
