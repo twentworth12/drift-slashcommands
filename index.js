@@ -81,7 +81,7 @@ function communityPost (conversationId, orgId, messageBody) {
     .send(forumMessage)
     .end(function (err, res) {
 	console.log("Posted to Vanilla");
-	var returnmessage="I created a post in the community for you<br/>" + res.url
+	var returnmessage="I created a post in the community for you<br/>" + res.body.url
 	return postMessage(returnmessage, conversationId, orgId);
 	});
 }
