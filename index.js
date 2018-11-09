@@ -18,7 +18,7 @@ const VANILLA_TOKEN = process.env.VANILLA_API_TOKEN
 
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 const IMGFLIP_API_BASE = 'https://api.imgflip.com/caption_image'
-const VANILLA_API_BASE = 'https://rapidminer.vanillacommunities.com/api/v2'
+const VANILLA_API_BASE = 'https://community.rapidminer.com/api/v2'
 
 function handleMessage(orgId, data) {
   if (data.type === 'private_note') {
