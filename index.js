@@ -59,7 +59,7 @@ function communityPost (conversationId, orgId, messageBody) {
 // Post a message to the RapidMiner Community
 
   var messageBody = messageBody.slice(10)
-  var messageBody1 = messageBody.split(",")
+  var messageBody1 = messageBody.split("^")
   console.log("body is " + messageBody1[0])	
 	
   const forumMessage = {
