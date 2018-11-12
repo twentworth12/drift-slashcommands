@@ -58,7 +58,7 @@ function readMessage (conversationId, orgId, messageBody) {
 function communityPost (conversationId, orgId, messageBody) {
 // Post a message to the RapidMiner Community
 
-  var messageBody = messageBody.slice(11)
+  var messageBody = messageBody.slice(10)
   var messageBody1 = messageBody.split(",")
   console.log("body is " + messageBody1[0])	
 	
@@ -76,7 +76,7 @@ function communityPost (conversationId, orgId, messageBody) {
     .send(forumMessage)
     .end(function (err, res) {
 	console.log("Posted to Vanilla");
-	var returnmessage="<a href=" + res.body.url + ">I created a post in the RapidMiner Community for you</a>"
+	var returnmessage="<a href=" + res.body.url + ">I created a thread in the RapidMiner Community for you</a>. Most new posts get a response from the community in less than a few hours."
 	return postMessage(returnmessage, conversationId, orgId);
 	});
 }
