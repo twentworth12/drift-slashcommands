@@ -27,8 +27,8 @@ function handleMessage(orgId, data) {
     const conversationId = data.conversationId
 
     // Okay, what command did we get
-    if (messageBody.startsWith('/community')) {
-      console.log("Yeah! We found a /community message!!!")
+    if (messageBody.startsWith('/postthat')) {
+      console.log("Yeah! We found a /postthat message!!!")
       return communityPost(conversationId, orgId, messageBody)
     }
     if (messageBody.startsWith('/googlethat')) {
@@ -66,13 +66,8 @@ function communityPost (conversationId, orgId, messageBody) {
     'name': messageBody1[0],
     'body': messageBody1[1],
     'format': 'string',
-    'categoryID': 47,
-    'closed': false,
-    'sink': true,
-    'pinned': false,
-    'pinLocation': 'category',
-    'groupID': 'Unknown Type: integer,null'	  
-  } 
+    'categoryID': 103  
+  }
   
     request
     .post(VANILLA_API_BASE + `/discussions`)
