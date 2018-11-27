@@ -60,11 +60,12 @@ function communityPost (conversationId, orgId, messageBody) {
 
   var messageBody = messageBody.slice(10)
   var messageBody1 = messageBody.split("^")
-  console.log("body is " + messageBody1[0])	
+  var message = "A RapidMimner user wants to know the answer to this question, " + messageBody1[1]
+  console.log("body is " + message)
 	
   const forumMessage = {
     'name': messageBody1[0],
-    'body': messageBody1[1],
+    'body': message,
     'format': 'string',
     'categoryID': 103  
   }
