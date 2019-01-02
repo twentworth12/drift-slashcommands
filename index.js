@@ -71,7 +71,7 @@ function communityPost (conversationId, orgId, messageBody) {
   }
   
     request
-    .post(VANILLA_API_BASE + `/discussions`)
+    .post(VANILLA_API_BASE + `/discussions/question/`)
     .set('Content-Type', 'application/json')
     .set(`Authorization`, `bearer ${VANILLA_TOKEN}`)
     .send(forumMessage)
