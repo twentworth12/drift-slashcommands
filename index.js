@@ -60,7 +60,7 @@ function communityPost (conversationId, orgId, messageBody) {
 
   var messageBody = messageBody.slice(10)
   var messageBody1 = messageBody.split("^")
-  var message = "A RapidMiner user wants to know the answer to this question, " + messageBody1[1]
+  var message = "A RapidMiner user wants to know the answer to this question: " + messageBody1[1]
   console.log("body is " + message)
 	
   const forumMessage = {
