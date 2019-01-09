@@ -149,7 +149,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 		    
 		var link = res.data.items[i];
 		    
-		console.log("item is " + res.data.items[i];); 
+		console.log("item is " + res.data.items[i]);
 
 		body = "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>";
 		callbackFn(body, conversationId, orgId);
