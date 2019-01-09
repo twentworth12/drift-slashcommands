@@ -133,9 +133,11 @@ function memeThat (conversationId, orgId, messageBody) {
 function googleThat (conversationId, orgId, callbackFn, messageBody) {
 // Searches google using the custom search API
 	
+	 var searchQuery = messageBody.slice(11)
+	
 	  customsearch.cse.list({
 	    cx: GOOGLE_CX,
-	    q: messageBody,
+	    q: searchQuery,
 	    auth: GOOGLE_TOKEN
 	  }, (err, res) => {
 	    if (err) {
