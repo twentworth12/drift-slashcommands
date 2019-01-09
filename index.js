@@ -142,7 +142,7 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	      throw err;
 	    }
 
-	console.log("data is " + res.data);
+	console.log("data is " + JSON.stringify(res.data);
 		  
 	  for (var i = 0; i < 10; ++i) {	  
 	    if ((typeof res.data.items[i] != undefined) && (res.data.items[i] != null )) {  
