@@ -142,10 +142,11 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	      throw err;
 	    }
 		  
-	  for (var i = 0; i < 10; ++i) {
-		  
+	  for (var i = 0; i < 10; ++i) {	  
 	    if ((typeof res.data.items[i] != undefined) && (res.data.items[i] != null )) {
 
+		console.log    
+		    
 		var link = res.data.items[i];
 
 		body = "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>";
