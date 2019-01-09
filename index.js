@@ -142,8 +142,9 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	      throw err;
 	    }
 		  
-	  for (var i = 0; i < 6; ++i) {
-	    if (res.data.items[i] != undefined) {
+	  for (var i = 0; i < 10; ++i) {
+		  
+	    if (typeof res.data.items[i] != undefined) {
 
 		var link = res.data.items[i];
 
