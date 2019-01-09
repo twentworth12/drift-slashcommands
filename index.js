@@ -141,13 +141,15 @@ function googleThat (conversationId, orgId, callbackFn, messageBody) {
 	    if (err) {
 	      throw err;
 	    }
+
+	console.log("data is " + res.data);
 		  
 	  for (var i = 0; i < 10; ++i) {	  
-	    if ((typeof res.data.items[i] != undefined) && (res.data.items[i] != null )) {
-
-		console.log    
+	    if ((typeof res.data.items[i] != undefined) && (res.data.items[i] != null )) {  
 		    
 		var link = res.data.items[i];
+		    
+		console.log("item is " + res.data.items[i];); 
 
 		body = "<p><a target=_blank href=" + link.link + ">" + link.title + "</a><br/>" + "</p>";
 		callbackFn(body, conversationId, orgId);
