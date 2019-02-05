@@ -74,7 +74,7 @@ scoreData = '{"data":[{"pclass":1,"sex":"female","age":29,"sibsp":0,"parch":0,"f
     .set(`Authorization`, `bearer ${VANILLA_TOKEN}`)
     .send(scoreData)
     .end(function (err, res) {
-	console.log("res is "+ res); 
+	console.log("res is "+ JSON.stringify(res));
 	return postMessage("nothing to see here", conversationId, orgId);
 	});
 }
