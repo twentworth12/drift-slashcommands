@@ -75,7 +75,7 @@ scoreData = '{"data":[{"pclass":1,"sex":"female","age":29,"sibsp":0,"parch":0,"f
     .send(scoreData)
     .end(function (err, res) {
 	console.log("res is "+ res); 
-	return postMessage(returnmessage, conversationId, orgId);
+	return postMessage("nothing to see here", conversationId, orgId);
 	});
 }
 
