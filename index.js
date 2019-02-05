@@ -19,7 +19,6 @@ const VANILLA_TOKEN = process.env.VANILLA_API_TOKEN
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 const IMGFLIP_API_BASE = 'https://api.imgflip.com/caption_image'
 const VANILLA_API_BASE = 'https://community.rapidminer.com/api/v2'
-const AUTOMODEL_API_BASE = 'https://automodel.rapidminer.com/api/deployments/931a73ec-eee1-4297-a85b-72e1f048413c'
 
 function handleMessage(orgId, data) {
   if (data.type === 'private_note') {
@@ -35,10 +34,6 @@ function handleMessage(orgId, data) {
     if (messageBody.startsWith('/googlethat')) {
       console.log("Yeah! We found a /googlethat message!!!")
       return readMessage(conversationId, orgId, messageBody)
-    }
-    if (messageBody.startsWith('/score')) {
-      console.log("Yeah! We found a /score message!!!")
-      return score(conversationId, orgId, messageBody)
     }
    if (messageBody.startsWith('/meme')) {
       console.log("Yeah! We found a /meme message!!!")
@@ -60,24 +55,6 @@ function readMessage (conversationId, orgId, messageBody) {
 	   });
 }
 
-function score (conversationId, orgId, messageBody) {
-// Post a message to the RapidMiner Community
-
-  var messageBody = messageBody.slice(10)
-  var messageBody1 = messageBody.split("^")
-
-scoreData = '{"data":[{"pclass":1,"sex":"female","age":29,"sibsp":0,"parch":0,"fare":211.3375,"embarked":"S"}]}'
-  
-    request
-    .post(AUTOMODEL_API_BASE)
-    .set('Content-Type', 'application/json')
-    .set(`Authorization`, `bearer ${VANILLA_TOKEN}`)
-    .send(scoreData)
-    .end(function (err, res) {
-	console.log("res is "+ JSON.stringify(res));
-	return postMessage("nothing to see here", conversationId, orgId);
-	});
-}
 
 function communityPost (conversationId, orgId, messageBody) {
 // Post a message to the RapidMiner Community
