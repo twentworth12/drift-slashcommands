@@ -65,7 +65,6 @@ function score (conversationId, orgId, messageBody) {
 
   var messageBody = messageBody.slice(10)
   var messageBody1 = messageBody.split("^")
-  console.log("body is " + message)
 
 scoreData = '{"data":[{"pclass":1,"sex":"female","age":29,"sibsp":0,"parch":0,"fare":211.3375,"embarked":"S"}]}'
   
