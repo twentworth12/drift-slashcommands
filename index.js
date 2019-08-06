@@ -63,7 +63,7 @@ function callContentful (conversationId, orgId, messageBody) {
 		
 	entry.fields.botResponse.content.forEach((item) => {
   	Object.entries(item).forEach(([key, val]) => {
-    	console.log(`key-${key}-val-${JSON.stringify(val.content.value)}`)
+    	console.log(`key-${key}-val-${JSON.stringify(val.value)}`)
   		});
 	});	
 		
