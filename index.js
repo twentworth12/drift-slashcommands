@@ -53,12 +53,17 @@ function callContentful (conversationId, orgId, messageBody) {
   		space: '<space_id>',
   		accessToken: CONTENTFUL_TOKEN
 	})
+
+	client.getEntry('prN68imofqr4PIQcyF8Or')
+	.then(function (entry) {
+  	// logs the entry metadata
+  	console.log(entry.sys)
+
+  	// logs the field with ID title
+  	console.log(entry.fields.productName)
+	})
 	
-	 if (messageBody.startsWith('/memethat')) {
-	   var memeBody = messageBody.slice(10)
-           var memeBody1 = memeBody.split(",")
-	   console.log("body is " + memeBody1[0])	 
-           
+   
 	   request
 	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
 	  .set('Content-Type', 'application/json')
@@ -68,7 +73,6 @@ function callContentful (conversationId, orgId, messageBody) {
 		postMessage(meme, conversationId, orgId)
 		return
 	   });
-	 }
 }
 
 function memeThat (conversationId, orgId, messageBody) {
