@@ -7,6 +7,8 @@ const contentful = require("contentful");
 // Set these in Heroku
 const DRIFT_TOKEN = process.env.BOT_API_TOKEN
 
+const CONTENTFUL_TOKEN = process.env.CONTENTFUL_TOKEN
+
 const IMGFLIP_USER = process.env.IMGFLIP_USER
 const IMGFLIP_PASS = process.env.IMGFLIP_PASS
 
@@ -46,6 +48,11 @@ function readMessage (conversationId, orgId, messageBody) {
 
 function callContentful (conversationId, orgId, messageBody) {
 // TODO
+	
+	var client = contentful.createClient({
+  		space: '<space_id>',
+  		accessToken: CONTENTFUL_TOKEN
+	})
 	
 	 if (messageBody.startsWith('/memethat')) {
 	   var memeBody = messageBody.slice(10)
