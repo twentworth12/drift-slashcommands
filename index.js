@@ -61,6 +61,12 @@ function callContentful (conversationId, orgId, messageBody) {
   	// logs the field with ID title
 	console.log(JSON.stringify(entry.fields.botResponse.content))
 		
+	entry.fields.botResponse.content.forEach((item) => {
+  	Object.entries(item).forEach(([key, val]) => {
+    	console.log(`key-${key}-val-${JSON.stringify(val)}`)
+  		});
+	});	
+		
 	var response = "<b>" + entry.fields.botTitle + "</b><br/>" + entry.fields.botResponse
 		
 	postMessage(response, conversationId, orgId)	
