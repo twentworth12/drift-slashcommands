@@ -63,16 +63,7 @@ function callContentful (conversationId, orgId, messageBody) {
   	console.log(entry.fields.productName)
 	})
 	
-   
-	   request
-	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
-	  .set('Content-Type', 'application/json')
-	  .end(function (err, res) {
-		var meme = "<img src=" + res.body.data.url + ">"
-		console.log("meme is " + meme);
-		postMessage(meme, conversationId, orgId)
-		return
-	   });
+	postMessage("test", conversationId, orgId)
 }
 
 function memeThat (conversationId, orgId, messageBody) {
