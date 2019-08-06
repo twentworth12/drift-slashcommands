@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const request = require('superagent
+const request = require('superagent')
 const contentful = require("contentful");
 
 // Set these in Heroku
