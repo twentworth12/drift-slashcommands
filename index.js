@@ -22,7 +22,7 @@ function handleMessage(orgId, data) {
 
    if (messageBody.startsWith('/contentful')) {
       console.log("Yeah! We found a /contentful message!!!")
-      return contentful (conversationId, orgId, messageBody)
+      return callContentful (conversationId, orgId, messageBody)
     }     
     
    if (messageBody.startsWith('/meme')) {
@@ -44,7 +44,7 @@ function readMessage (conversationId, orgId, messageBody) {
 	   });
 }
 
-function contentful (conversationId, orgId, messageBody) {
+function callContentful (conversationId, orgId, messageBody) {
 // TODO
 	
 	 if (messageBody.startsWith('/memethat')) {
