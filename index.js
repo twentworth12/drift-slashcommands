@@ -60,7 +60,7 @@ function callContentful (conversationId, orgId, messageBody) {
   	console.log(entry.sys)
 
   	// logs the field with ID title
-  	console.log(entry.fields.productName)
+  	console.log(entry.fields.botTitle)
 	})
 	
 	postMessage("test", conversationId, orgId)
