@@ -57,7 +57,6 @@ function callContentful (conversationId, orgId, messageBody) {
 	client.getEntry('prN68imofqr4PIQcyF8Or')
 	.then(function (entry) {
   	// logs the entry metadata
-  	console.log(entry.sys)
 
   	// logs the field with ID title
   	console.log(entry.fields.botTitle)
