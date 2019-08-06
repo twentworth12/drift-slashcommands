@@ -50,7 +50,7 @@ function callContentful (conversationId, orgId, messageBody) {
 // TODO
 	
 	var client = contentful.createClient({
-  		space: '<space_id>',
+  		space: 'xkivofc9fjur',
   		accessToken: CONTENTFUL_TOKEN
 	})
 
