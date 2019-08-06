@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const request = require('superagent');
-const customsearch = google.customsearch('v1');
 
 // Set these in Heroku
 const DRIFT_TOKEN = process.env.BOT_API_TOKEN
@@ -20,15 +19,6 @@ function handleMessage(orgId, data) {
     const messageBody = data.body
     const conversationId = data.conversationId
 
-    // Okay, what command did we get
-    if (messageBody.startsWith('/postthat')) {
-      console.log("Yeah! We found a /postthat message!!!")
-      return communityPost(conversationId, orgId, messageBody)
-    }
-    if (messageBody.startsWith('/googlethat')) {
-      console.log("Yeah! We found a /googlethat message!!!")
-      return readMessage(conversationId, orgId, messageBody)
-    }
    if (messageBody.startsWith('/meme')) {
       console.log("Yeah! We found a /meme message!!!")
       return memeThat(conversationId, orgId, messageBody)
