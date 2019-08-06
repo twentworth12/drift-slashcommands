@@ -10,8 +10,6 @@ const DRIFT_TOKEN = process.env.BOT_API_TOKEN
 const IMGFLIP_USER = process.env.IMGFLIP_USER
 const IMGFLIP_PASS = process.env.IMGFLIP_PASS
 
-const VANILLA_TOKEN = process.env.VANILLA_API_TOKEN
-
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 const IMGFLIP_API_BASE = 'https://api.imgflip.com/caption_image'
 
