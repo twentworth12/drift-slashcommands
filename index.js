@@ -59,7 +59,6 @@ function callContentful (conversationId, orgId, messageBody) {
   	// logs the entry metadata
 
   	// logs the field with ID title
-  	console.log(entry.fields.botTitle)
 	console.log(entry.fields.botResponse)
 		
 	var response = "<b>" + entry.fields.botTitle + "</b><br/>" + entry.fields.botResponse
