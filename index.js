@@ -61,9 +61,10 @@ function callContentful (conversationId, orgId, messageBody) {
 
   	// logs the field with ID title
   	console.log(entry.fields.botTitle)
+	postMessage(entry.fields.botTitle, conversationId, orgId)	
 	})
 	
-	postMessage("test", conversationId, orgId)
+	
 }
 
 function memeThat (conversationId, orgId, messageBody) {
