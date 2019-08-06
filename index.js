@@ -62,7 +62,10 @@ function callContentful (conversationId, orgId, messageBody) {
   	// logs the field with ID title
   	console.log(entry.fields.botTitle)
 	console.log(entry.fields.botResponse)
-	postMessage(entry.fields.botResponse, conversationId, orgId)	
+		
+	var response = "<b>" + entry.fields.botTitle + "</b><br/>" + entry.fields.botResponse
+		
+	postMessage(response, conversationId, orgId)	
 	})
 	
 	
