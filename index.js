@@ -133,6 +133,8 @@ function memeThat (conversationId, orgId, messageBody) {
 function googleThat (conversationId, orgId, callbackFn, messageBody) {
 // Searches google using the custom search API
 	
+	console.log("the message is: " + messageBody)
+	
 	 var searchQuery = messageBody.slice(11)
 	
 	  customsearch.cse.list({
@@ -177,7 +179,7 @@ function postMessage(body, conversationId, orgId) {
       }
     },]
   }   
-    
+  
     // Send the message
     request
     .post(CONVERSATION_API_BASE + `/${conversationId}/messages`)
