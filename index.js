@@ -32,7 +32,7 @@ function handleMessage(orgId, data) {
       return communityPost(conversationId, orgId, messageBody)
     }
     if (messageBody.startsWith('/googlethat')) {
-      console.log("Yeah! We found a /googlethat message!!!")
+      console.log("We found a /googlethat mesage")
       return readMessage(conversationId, orgId, messageBody)
     }
     if (messageBody.startsWith('/meme')) {
