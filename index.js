@@ -21,6 +21,9 @@ const IMGFLIP_API_BASE = 'https://api.imgflip.com/caption_image'
 const VANILLA_API_BASE = 'https://community.rapidminer.com/api/v2'
 
 function handleMessage(orgId, data) {
+
+	console.log("message is: " + data.body)
+	
   if (data.type === 'private_note') {
     console.log("Drift private note")
     const messageBody = data.body
