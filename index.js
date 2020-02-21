@@ -18,7 +18,6 @@ const VANILLA_TOKEN = process.env.VANILLA_API_TOKEN
 
 const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 const IMGFLIP_API_BASE = 'https://api.imgflip.com/caption_image'
-const VANILLA_API_BASE = 'https://community.rapidminer.com/api/v2'
 
 function handleMessage(orgId, data) {
 
@@ -56,33 +55,6 @@ function readMessage (conversationId, orgId, messageBody) {
 	  .end(function (err, res) {
 		return googleThat(conversationId, orgId, GoogleThat, messageBody)
 	   });
-}
-
-function communityPost (conversationId, orgId, messageBody) {
-// Post a message to the RapidMiner Community
-
-  var messageBody = messageBody.slice(10)
-  var messageBody1 = messageBody.split("^")
-  var message = "A RapidMiner user wants to know the answer to this question: " + messageBody1[1]
-  console.log("body is " + message)
-	
-  const forumMessage = {
-    'name': messageBody1[0],
-    'body': message,
-    'format': 'string',
-    'categoryID': 103  
-  }
-  
-    request
-    .post(VANILLA_API_BASE + `/discussions/question/`)
-    .set('Content-Type', 'application/json')
-    .set(`Authorization`, `bearer ${VANILLA_TOKEN}`)
-    .send(forumMessage)
-    .end(function (err, res) {
-	console.log("Posted to Vanilla");
-	var returnmessage="<a href=" + res.body.url + ">I created a thread in the RapidMiner Community for you</a>. Most new posts get a response from the community in less than a few hours."
-	return postMessage(returnmessage, conversationId, orgId);
-	});
 }
 
 function memeThat (conversationId, orgId, messageBody) {
