@@ -20,8 +20,6 @@ const CONVERSATION_API_BASE = 'https://driftapi.com/conversations'
 const IMGFLIP_API_BASE = 'https://api.imgflip.com/caption_image'
 
 function handleMessage(orgId, data) {
-
-	console.log("message is: " + data.body)
 	
   if (data.type === 'private_note') {
     console.log("Drift private note")
@@ -44,7 +42,6 @@ function handleMessage(orgId, data) {
   }
 return
 }
-
 
 // Get the email address from Drift
 function readMessage (conversationId, orgId, messageBody) {
@@ -91,8 +88,7 @@ function memeThat (conversationId, orgId, messageBody) {
 			   var memeChar = "1509839";
 	   }
 		 
-		 
-           
+		  
 	   request
 	  .get(IMGFLIP_API_BASE + "?template_id=" + memeChar + "&username=" + IMGFLIP_USER + "&password=" + IMGFLIP_PASS + "&text0=" + memeBody1[1] + "&text1=" + memeBody1[2])
 	  .set('Content-Type', 'application/json')
