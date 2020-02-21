@@ -162,7 +162,6 @@ function postMessage(body, conversationId, orgId) {
 app.use(bodyParser.json())
 app.listen(process.env.PORT || 3000, () => console.log('slashcommands-rf listening on port 3000!'))
 app.post('/api', (req, res) => {
-console.log("req is " + req.body.type);
   if (req.body.type === 'new_message') {
       handleMessage(req.body.orgId, req.body.data); 
   }
